@@ -1,6 +1,10 @@
 import logo from './logo.svg';
 import { useEffect, useState } from 'react';
+import React from 'react';
+import ReactDOM from 'react-dom';
 import './App.css';
+require('dotenv').config();
+const { v4: uuid } = require('uuid');
 
 function App() {
   const [ufs, setUfs] = useState([]);
@@ -8,7 +12,8 @@ function App() {
   const [selectedUf, setSelectedUf] = useState('0');
   const [selectedCity, setSelectedCity] = useState('0');
   const [selectedDate, setSelectedDate] = useState('');
-  const [selectedNews, setSelectedNews] = useState('');
+  const [selectedNews, setSelectedNews] = useState(['']);
+  const [searchTrigger, setsearchTrigger] = useState(false);
 
   function convert_date(s, fmt) {
     let s_splitted = s.split('-');
@@ -33,6 +38,10 @@ function App() {
       d.getDate() === parts[1] &&
       d.getFullYear() === parts[2]
     );
+  }
+
+  function activateSearch() {
+    setsearchTrigger(!searchTrigger);
   }
 
   useEffect(() => {
@@ -79,15 +88,27 @@ function App() {
     }
 
     console.log(
-      `https://apinoticias.tedk.com.br/api/?q=${selectedCity
+      //`https://apinoticias.tedk.com.br/api/?q=${
+      //  selectedCity.split(' ').join('').trim() + selectedUf.trim()
+      //}&date=${convert_date(
+      //  selectedDate
+      //)}`
+      `https://newsapi.org/v2/everything?q=${selectedCity
         .split(' ')
-        .join('%20')}%20${selectedUf}&date=${convert_date(selectedDate)}`
+        .join('%20')
+        .trim() +
+        '%20' +
+        selectedUf.trim()}&apiKey=${
+        process.env.API_KEY
+      }&from=${selectedDate}&sortBy=popularity`
     );
     fetch(
-      `https://apinoticias.tedk.com.br/api/?q=${selectedCity
+      `https://newsapi.org/v2/everything?q=${selectedCity
         .split(' ')
-        .join('%20')}%20${selectedUf}&date=${convert_date(selectedDate)}`,
-      { mode: 'no-cors' }
+        .join('%20')
+        .trim() +
+        '%20' +
+        selectedUf.trim()}&apiKey=${process.env.REACT_APP_API_KEY}`
     )
       .then((res) => {
         if (res.ok) {
@@ -95,10 +116,9 @@ function App() {
         }
       })
       .then((response) => {
-        console.log(response);
-        setSelectedNews(response);
+        setSelectedNews(response.articles);
       });
-  }, [selectedCity, selectedUf, selectedDate]);
+  }, [searchTrigger]);
 
   function handleSelectUf(evt) {
     const uf = evt.target.value;
@@ -151,11 +171,14 @@ function App() {
         </select>
 
         <input type="date" onChange={handleSelectDate} />
+
+        <button onClick={activateSearch}>Procurar</button>
       </div>
 
       <div className="main-content">
-        {selectedNews ? `${selectedUf}/${selectedCity}` : ''}
-        {selectedNews}
+        {selectedNews.length === 0
+          ? 'Nenhuma noticia encontrada.'
+          : selectedNews.map((news) => <p key={uuid()}>{news.title}</p>)}
       </div>
     </div>
   );
