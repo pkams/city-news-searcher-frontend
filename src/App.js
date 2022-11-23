@@ -1,10 +1,14 @@
 import logo from './logo.svg';
 import { useEffect, useState } from 'react';
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
+import Main from './components/Main';
+import Header from './components/Header';
+import Navigation from './components/Navigation';
+import Footer from './components/Footer';
+import About from './components/About';
 require('dotenv').config();
-const { v4: uuid } = require('uuid');
 
 function App() {
   const [ufs, setUfs] = useState([]);
@@ -14,16 +18,7 @@ function App() {
   const [selectedDate, setSelectedDate] = useState('');
   const [selectedNews, setSelectedNews] = useState(['']);
   const [searchTrigger, setsearchTrigger] = useState(false);
-
-  function convert_date(s, fmt) {
-    let s_splitted = s.split('-');
-    if (fmt === 'US') {
-      s = `${s_splitted[1]}/${s_splitted[2]}/${s_splitted[0]}`;
-    } else {
-      s = `${s_splitted[2]}/${s_splitted[1]}/${s_splitted[0]}`;
-    }
-    return s;
-  }
+  const [searching, setSearching] = useState(false);
 
   function validate_date(s) {
     s = convert_date(s, 'US');
@@ -40,8 +35,14 @@ function App() {
     );
   }
 
-  function activateSearch() {
-    setsearchTrigger(!searchTrigger);
+  function convert_date(s, fmt) {
+    let s_splitted = s.split('-');
+    if (fmt === 'US') {
+      s = `${s_splitted[1]}/${s_splitted[2]}/${s_splitted[0]}`;
+    } else {
+      s = `${s_splitted[2]}/${s_splitted[1]}/${s_splitted[0]}`;
+    }
+    return s;
   }
 
   useEffect(() => {
@@ -87,99 +88,52 @@ function App() {
       return;
     }
 
-    console.log(
-      //`https://apinoticias.tedk.com.br/api/?q=${
-      //  selectedCity.split(' ').join('').trim() + selectedUf.trim()
-      //}&date=${convert_date(
-      //  selectedDate
-      //)}`
-      `https://newsapi.org/v2/everything?q=${selectedCity
-        .split(' ')
-        .join('%20')
-        .trim() +
-        '%20' +
-        selectedUf.trim()}&apiKey=${
-        process.env.API_KEY
-      }&from=${selectedDate}&sortBy=popularity`
-    );
-    fetch(
-      `https://newsapi.org/v2/everything?q=${selectedCity
-        .split(' ')
-        .join('%20')
-        .trim() +
-        '%20' +
-        selectedUf.trim()}&apiKey=${process.env.REACT_APP_API_KEY}`
-    )
+    let url_call = `https://newsapi.org/v2/everything?q=${
+      selectedCity.split(' ').join('%20').trim() + '%20' + selectedUf.trim()
+    }&apiKey=${
+      process.env.REACT_APP_API_KEY
+    }&from=${selectedDate}&sortBy=popularity`;
+
+    console.log(url_call);
+
+    fetch(url_call)
+      .then(setSearching(true))
       .then((res) => {
         if (res.ok) {
           return res.json();
         }
       })
       .then((response) => {
+        setSearching(false);
         setSelectedNews(response.articles);
       });
   }, [searchTrigger]);
 
-  function handleSelectUf(evt) {
-    const uf = evt.target.value;
-    setSelectedUf(uf);
-  }
-
-  function handleSelectCity(evt) {
-    const city = evt.target.value;
-    setSelectedCity(city);
-  }
-
-  function handleSelectDate(evt) {
-    const date = evt.target.value;
-    setSelectedDate(date);
-  }
-
   return (
     <div className="App">
-      {/*<Header></Header>*/}
-      <h1>
-        Selecione o estado e cidade para encontrar noticias para a data
-        escolhida!
-      </h1>
-      <div className="forms">
-        <select name="uf" id="uf" onChange={handleSelectUf}>
-          <option value="0" key="select_uf">
-            Selecione uma UF
-          </option>
-          {ufs.map((uf) => (
-            <option value={uf.sigla} key={uf.sigla}>
-              {uf.nome}
-            </option>
-          ))}
-        </select>
-
-        <select
-          name="city"
-          id="city"
-          value={selectedCity}
-          onChange={handleSelectCity}
-        >
-          <option value="0" key="select_city">
-            Selecione uma cidade
-          </option>
-          {cities.map((city) => (
-            <option value={city.nome} key={city.id}>
-              {city.nome}
-            </option>
-          ))}
-        </select>
-
-        <input type="date" onChange={handleSelectDate} />
-
-        <button onClick={activateSearch}>Procurar</button>
-      </div>
-
-      <div className="main-content">
-        {selectedNews.length === 0
-          ? 'Nenhuma noticia encontrada.'
-          : selectedNews.map((news) => <p key={uuid()}>{news.title}</p>)}
-      </div>
+      <Header />
+      <Navigation />
+      <Routes>
+        <Route path="/" element={<About />} />
+        <Route
+          path="/main"
+          element={
+            <Main
+              setSelectedDate={setSelectedDate}
+              setSelectedCity={setSelectedCity}
+              setSelectedUf={setSelectedUf}
+              setsearchTrigger={setsearchTrigger}
+              searchTrigger={searchTrigger}
+              ufs={ufs}
+              selectedCity={selectedCity}
+              cities={cities}
+              selectedNews={selectedNews}
+              searching={searching}
+            />
+          }
+        />
+      </Routes>
+      <Footer />
     </div>
   );
 }
