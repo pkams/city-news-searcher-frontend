@@ -1,0 +1,21 @@
+.navigation {
+  display: flex;
+  margin: 0 50px;
+  border-bottom: 1px solid #ccc;
+}
+
+.navigation__menu {
+  display: flex;
+  align-self: center;
+  margin-left: auto;
+}
+
+.navigation__menu-item {
+  margin-left: 50px;
+  text-decoration: none;
+  color: #fff;
+}
+
+.navigation__menu-item:hover {
+  color: #aaa;
+}

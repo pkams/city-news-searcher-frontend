@@ -1,13 +1,12 @@
-import logo from './logo.svg';
 import { useEffect, useState } from 'react';
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
-import Main from './components/Main';
-import Header from './components/Header';
-import Navigation from './components/Navigation';
-import Footer from './components/Footer';
-import About from './components/About';
+import Main from '../Main/Main';
+import Header from '../Header/Header';
+import Navigation from '../Navigation/Navigation';
+import Footer from '../Footer/Footer';
+import About from '../About/About';
 require('dotenv').config();
 
 function App() {
@@ -61,7 +60,7 @@ function App() {
         //console.log(response);
         setCities(response);
       });
-  });
+  }, [selectedUf]);
 
   useEffect(() => {
     fetch('https://servicodados.ibge.gov.br/api/v1/localidades/estados/')
@@ -74,7 +73,7 @@ function App() {
         //console.log(response);
         setUfs(response);
       });
-  }, [selectedUf]);
+  }, []);
 
   useEffect(() => {
     console.log(
@@ -125,6 +124,7 @@ function App() {
               setsearchTrigger={setsearchTrigger}
               searchTrigger={searchTrigger}
               ufs={ufs}
+              selectedUf={selectedUf}
               selectedCity={selectedCity}
               cities={cities}
               selectedNews={selectedNews}

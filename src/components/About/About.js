@@ -1,9 +1,10 @@
 import React from 'react';
+import './about.css';
 
 export default function About() {
   return (
     <>
-      <div className="Header">
+      <div className="about">
         <p>
           Lorem Ipsum is simply dummy text of the printing and typesetting
           industry. Lorem Ipsum has been the industry's standard dummy text ever

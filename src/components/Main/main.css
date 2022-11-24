@@ -1,0 +1,12 @@
+.main {
+  margin: 20px 50px auto 50px;
+}
+
+.main__forms {
+  display: flex;
+  justify-content: space-between;
+}
+
+.main__content {
+  margin: 20px 0;
+}
