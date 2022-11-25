@@ -27,7 +27,6 @@ function App() {
     }
     const parts = s.split('/').map((p) => parseInt(p, 10));
     const d = new Date(parts[2], parts[0], parts[1]);
-    console.log(d);
     return (
       d.getMonth() === parts[0] &&
       d.getDate() === parts[1] &&
@@ -110,6 +109,7 @@ function App() {
           setSelectedNews(response.articles);
         } else {
           var d = new Date();
+          console.log(d);
           d.setMonth(d.getMonth() - 1);
           setSearching(false);
           setSelectedNews([]);
