@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "604c89c12e8ac40a8aa7",
+    "revision": "5e7cf13bc1ebfc139641",
     "url": "/city-news-searcher-frontend/static/css/main.d6050904.chunk.css"
   },
   {
-    "revision": "604c89c12e8ac40a8aa7",
-    "url": "/city-news-searcher-frontend/static/js/main.f8a119ed.chunk.js"
+    "revision": "5e7cf13bc1ebfc139641",
+    "url": "/city-news-searcher-frontend/static/js/main.fd9365ea.chunk.js"
   },
   {
     "revision": "2b97c5a9c7cffa5e2e98",
@@ -20,7 +20,7 @@ self.__precacheManifest = [
     "url": "/city-news-searcher-frontend/static/js/3.b84871a5.chunk.js"
   },
   {
-    "revision": "40264c89d5358345029718a8c88048a4",
+    "revision": "8b8c9a701c735730c14a2aa4c36c79be",
     "url": "/city-news-searcher-frontend/index.html"
   }
 ];
