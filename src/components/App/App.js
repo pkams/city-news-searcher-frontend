@@ -87,11 +87,17 @@ function App() {
       return;
     }
 
-    let url_call = `https://newsapi.org/v2/everything?q=${
+    //let url_call = `https://newsapi.org/v2/everything?q=${
+    // selectedCity.split(' ').join('%20').trim() + '%20' + selectedUf.trim()
+    //}&apiKey=${
+    //  process.env.REACT_APP_API_KEY
+    //}&from=${selectedDate}&sortBy=popularity`;
+
+    let url_call = `https://servicodados.ibge.gov.br/api/v3/noticias/?busca=${
       selectedCity.split(' ').join('%20').trim() + '%20' + selectedUf.trim()
-    }&apiKey=${
-      process.env.REACT_APP_API_KEY
-    }&from=${selectedDate}&sortBy=popularity`;
+    }&de=${selectedDate}`;
+
+    //servicodados.ibge.gov.br/api/v3/noticias/?busca=manaus%20AM
 
     console.log(url_call);
 
@@ -103,13 +109,13 @@ function App() {
         }
       })
       .then((response) => {
+        console.log(response);
         if (response != null) {
           setMessage('Nenhuma noticia encontrada.');
           setSearching(false);
-          setSelectedNews(response.articles);
+          setSelectedNews(response.items);
         } else {
           var d = new Date();
-          console.log(d);
           d.setMonth(d.getMonth() - 1);
           setSearching(false);
           setSelectedNews([]);

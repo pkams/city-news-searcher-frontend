@@ -2,25 +2,36 @@ import React from 'react';
 import './card.css';
 
 export default function Card(props) {
+  console.log(
+    'https://agenciadenoticias.ibge.gov.br/' +
+      JSON.parse(props.news.imagens).image_intro
+  );
   return (
     <div className="card">
-      <img
-        className="card__img"
-        src={props.news.urlToImage}
-        alt={`imagem demonstrativa da noticia ${props.news.title}`}
-      />
+      {
+        <img
+          className="card__img"
+          src={
+            'https://agenciadenoticias.ibge.gov.br/' +
+            JSON.parse(props.news.imagens).image_intro
+          }
+          alt={`imagem demonstrativa da noticia ${props.news.title}`}
+        />
+      }
       <div className="card__content">
         <p>
-          {props.news.title === null
+          {props.news.titulo === null
             ? '(Reportagem sem titulo)'
-            : props.news.title}
+            : props.news.titulo}
         </p>
-        <a href={props.news.url}>{props.news.url}</a>
+        <a href={props.news.link} target="_blank">
+          {props.news.link}
+        </a>
 
         <p>
           {props.news.author === null
-            ? '(Reportagem sem fonte)'
-            : `Fonte: ${props.news.author}`}
+            ? '(Reportagem sem editorias)'
+            : `Editorias: ${props.news.editorias}`}
         </p>
       </div>
     </div>
