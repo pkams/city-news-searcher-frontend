@@ -18,6 +18,7 @@ function App() {
   const [selectedNews, setSelectedNews] = useState(['']);
   const [searchTrigger, setsearchTrigger] = useState(false);
   const [searching, setSearching] = useState(false);
+  const [message, setMessage] = useState('Nenhuma noticia encontrada.');
 
   function validate_date(s) {
     s = convert_date(s, 'US');
@@ -103,8 +104,19 @@ function App() {
         }
       })
       .then((response) => {
-        setSearching(false);
-        setSelectedNews(response.articles);
+        if (response != null) {
+          setMessage('Nenhuma noticia encontrada.');
+          setSearching(false);
+          setSelectedNews(response.articles);
+        } else {
+          var d = new Date();
+          d.setMonth(d.getMonth() - 1);
+          setSearching(false);
+          setSelectedNews([]);
+          setMessage(
+            `A API permite buscas até 30 dias anteriores a data atual, mude a data para no mínimo: ${d.toLocaleDateString()}.`
+          );
+        }
       });
   }, [searchTrigger]);
 
@@ -129,6 +141,7 @@ function App() {
               cities={cities}
               selectedNews={selectedNews}
               searching={searching}
+              message={message}
             />
           }
         />

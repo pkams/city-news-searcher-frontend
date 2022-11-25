@@ -36,7 +36,12 @@ export default function Main(props) {
       <div className="main__forms">
         <div className="main__forms-item">
           <label>UF:</label>
-          <select name="uf" id="uf" onChange={handleSelectUf}>
+          <select
+            name="uf"
+            id="uf"
+            onChange={handleSelectUf}
+            className="main__forms-item-input"
+          >
             <option value="0" key="select_uf">
               Selecione uma UF
             </option>
@@ -55,6 +60,7 @@ export default function Main(props) {
             id="city"
             value={props.selectedCity}
             onChange={handleSelectCity}
+            className="main__forms-item-input"
           >
             <option value="0" key="select_city">
               Selecione uma cidade
@@ -69,17 +75,23 @@ export default function Main(props) {
 
         <div className="main__forms-item">
           <label>Data de inicio:</label>
-          <input type="date" onChange={handleSelectDate} />
+          <input
+            type="date"
+            onChange={handleSelectDate}
+            className="main__forms-item-input"
+          />
         </div>
 
-        <button onClick={activateSearch}>Pesquisar</button>
+        <button onClick={activateSearch} className="main__forms-item-button">
+          Pesquisar
+        </button>
       </div>
 
       <div className="main__content">
         {props.searching ? (
           <Preloader />
         ) : props.selectedNews.length === 0 ? (
-          'Nenhuma noticia encontrada.'
+          props.message
         ) : (
           props.selectedNews.map((news) =>
             news.length === 0 ? '' : <Card key={uuid()} news={news} />
