@@ -1,3 +1,13 @@
+# Web Development - Practicum by Yandex - Final Project
+
+(Project and readme still in development)
+
+===
+
+Projeto: https://pkams.github.io/city-news-searcher-frontend
+
+===
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
