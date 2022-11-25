@@ -1,7 +1,7 @@
 {
   "main.css": "/city-news-searcher-frontend/static/css/main.d6050904.chunk.css",
-  "main.js": "/city-news-searcher-frontend/static/js/main.d5e7f3fd.chunk.js",
-  "main.js.map": "/city-news-searcher-frontend/static/js/main.d5e7f3fd.chunk.js.map",
+  "main.js": "/city-news-searcher-frontend/static/js/main.f8a119ed.chunk.js",
+  "main.js.map": "/city-news-searcher-frontend/static/js/main.f8a119ed.chunk.js.map",
   "runtime~main.js": "/city-news-searcher-frontend/static/js/runtime~main.e713f161.js",
   "runtime~main.js.map": "/city-news-searcher-frontend/static/js/runtime~main.e713f161.js.map",
   "static/js/2.001214cc.chunk.js": "/city-news-searcher-frontend/static/js/2.001214cc.chunk.js",
@@ -9,7 +9,7 @@
   "static/js/3.b84871a5.chunk.js": "/city-news-searcher-frontend/static/js/3.b84871a5.chunk.js",
   "static/js/3.b84871a5.chunk.js.map": "/city-news-searcher-frontend/static/js/3.b84871a5.chunk.js.map",
   "index.html": "/city-news-searcher-frontend/index.html",
-  "precache-manifest.d1979b06a3c987a553789284da48c91f.js": "/city-news-searcher-frontend/precache-manifest.d1979b06a3c987a553789284da48c91f.js",
+  "precache-manifest.258f313eefcefe3b2dbe4ea6f056943e.js": "/city-news-searcher-frontend/precache-manifest.258f313eefcefe3b2dbe4ea6f056943e.js",
   "service-worker.js": "/city-news-searcher-frontend/service-worker.js",
   "static/css/main.d6050904.chunk.css.map": "/city-news-searcher-frontend/static/css/main.d6050904.chunk.css.map"
 }
