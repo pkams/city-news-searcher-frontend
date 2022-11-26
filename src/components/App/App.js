@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { createRef, useEffect, useState } from 'react';
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
@@ -14,11 +14,13 @@ function App() {
   const [cities, setCities] = useState([]);
   const [selectedUf, setSelectedUf] = useState('0');
   const [selectedCity, setSelectedCity] = useState('0');
-  const [selectedDate, setSelectedDate] = useState('');
+  const [selectedDate, setSelectedDate] = useState('dd/mm/aaaa');
   const [selectedNews, setSelectedNews] = useState(['']);
   const [searchTrigger, setsearchTrigger] = useState(false);
   const [searching, setSearching] = useState(false);
   const [message, setMessage] = useState('Nenhuma noticia encontrada.');
+  const [disableButton, setDisableButton] = useState(true);
+  const ref = createRef();
 
   function validate_date(s) {
     s = convert_date(s, 'US');
@@ -44,10 +46,31 @@ function App() {
     return s;
   }
 
+  function sort_by_key(array, key) {
+    return array.sort(function (a, b) {
+      var x = a[key];
+      var y = b[key];
+      return x < y ? -1 : x > y ? 1 : 0;
+    });
+  }
+
+  useEffect(() => {
+    fetch('https://servicodados.ibge.gov.br/api/v1/localidades/estados/')
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+      })
+      .then((response) => {
+        setUfs(sort_by_key(response, 'nome'));
+      });
+  }, []);
+
   useEffect(() => {
     if (selectedUf === '0') {
       return;
     }
+    setSelectedCity('0');
     fetch(
       `https://servicodados.ibge.gov.br/api/v1/localidades/estados/${selectedUf}/municipios`
     )
@@ -58,22 +81,9 @@ function App() {
       })
       .then((response) => {
         //console.log(response);
-        setCities(response);
+        setCities(sort_by_key(response, 'nome'));
       });
   }, [selectedUf]);
-
-  useEffect(() => {
-    fetch('https://servicodados.ibge.gov.br/api/v1/localidades/estados/')
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-      })
-      .then((response) => {
-        //console.log(response);
-        setUfs(response);
-      });
-  }, []);
 
   useEffect(() => {
     console.log(
@@ -126,6 +136,18 @@ function App() {
       });
   }, [searchTrigger]);
 
+  useEffect(() => {
+    const button = ref.current;
+    if (button == null) {
+      return;
+    }
+    if ((selectedCity != '0') & validate_date(selectedDate)) {
+      setDisableButton(false);
+    } else {
+      setDisableButton(true);
+    }
+  }, [selectedCity, selectedDate, ref]);
+
   return (
     <div className="App">
       <Header />
@@ -144,10 +166,14 @@ function App() {
               ufs={ufs}
               selectedUf={selectedUf}
               selectedCity={selectedCity}
-              cities={cities}
               selectedNews={selectedNews}
+              selectedDate={selectedDate}
+              cities={cities}
               searching={searching}
               message={message}
+              refVar={ref}
+              disableButton={disableButton}
+              convert_date={convert_date}
             />
           }
         />

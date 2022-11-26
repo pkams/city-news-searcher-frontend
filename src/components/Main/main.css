@@ -1,10 +1,10 @@
 .main {
-  margin: 20px 50px auto 50px;
+  margin: 20px 200px auto 200px;
 }
 
 .main__forms {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
 }
 
 .main__content {
@@ -47,6 +47,11 @@
   cursor: pointer;
 }
 
-.main__forms-item-button:hover {
+.main__forms-item-button:hover:enabled {
   background-color: rgb(249, 250, 251);
+}
+
+.main__forms-item-button:disabled {
+  opacity: 0.3;
+  pointer-events: none;
 }

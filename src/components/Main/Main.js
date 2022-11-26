@@ -28,7 +28,7 @@ export default function Main(props) {
   }
 
   return (
-    <div className="main">
+    <main className="main">
       <h2>
         Selecione o estado, cidade e data de inicio para encontrar noticias
         relacionadas!
@@ -39,6 +39,7 @@ export default function Main(props) {
           <select
             name="uf"
             id="uf"
+            value={props.selectedUf}
             onChange={handleSelectUf}
             className="main__forms-item-input"
           >
@@ -79,10 +80,16 @@ export default function Main(props) {
             type="date"
             onChange={handleSelectDate}
             className="main__forms-item-input"
+            value={props.selectedDate}
           />
         </div>
 
-        <button onClick={activateSearch} className="main__forms-item-button">
+        <button
+          onClick={activateSearch}
+          className="main__forms-item-button"
+          ref={props.refVar}
+          disabled={props.disableButton}
+        >
           Pesquisar
         </button>
       </div>
@@ -98,6 +105,6 @@ export default function Main(props) {
           )
         )}
       </div>
-    </div>
+    </main>
   );
 }

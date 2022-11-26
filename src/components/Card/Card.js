@@ -2,10 +2,6 @@ import React from 'react';
 import './card.css';
 
 export default function Card(props) {
-  console.log(
-    'https://agenciadenoticias.ibge.gov.br/' +
-      JSON.parse(props.news.imagens).image_intro
-  );
   return (
     <div className="card">
       {
