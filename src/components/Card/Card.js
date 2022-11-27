@@ -22,7 +22,7 @@ export default function Card(props) {
         <p className="card__content-title">
           {props.news.titulo === null
             ? '(Reportagem sem titulo)'
-            : props.news.titulo}
+            : `${props.idx + 1}. ${props.news.titulo}`}
         </p>
         <a
           href={props.news.link}

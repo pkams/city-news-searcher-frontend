@@ -4,6 +4,22 @@ import './about.css';
 export default function About() {
   return (
     <section className="about">
+      <h3>PT-BR</h3>
+      <p className="about__text">
+        O aplicativo "News Searcher Web App" foi implementado como projeto de
+        finalização do curso de Desenvolvedor Web da Practicum by Yandex. O
+        objetivo proposto foi criar um projeto frontend que interagisse com APIs
+        publicas utilizando o framework React e linguagem Javascript. As APIs
+        escolhidas para esta tarefa foram as APIs do IBGE para captura de dados
+        dos estados e municipios brasileiros e, a partir destes, a possibilidade
+        de pesquisar noticias relacionadas a determinada localidade baseando-se
+        na API de noticias do próprio IBGE. Devido ao carater de "prova de
+        conceito" do projeto, as noticias foram limitadas aquelas
+        disponibilizadas pela API do IBGE, mas o projeto pode ser escalado para
+        outras APIs de noticias utilizando os mesmos conceitos.
+      </p>
+
+      <h3>ENG</h3>
       <p className="about__text">
         The "News Searcher Web App" application was implemented as a final
         project for the Practicum by Yandex Web Developer course. The objective

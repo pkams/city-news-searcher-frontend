@@ -18,7 +18,6 @@ function App() {
   const [selectedNews, setSelectedNews] = useState(['']);
   const [searchTrigger, setsearchTrigger] = useState(false);
   const [searching, setSearching] = useState(false);
-  const [message, setMessage] = useState('Nenhuma noticia encontrada.');
   const [disableButton, setDisableButton] = useState(true);
   const [itemsToShow, setItemsToShow] = useState(3);
   const ref = createRef();
@@ -94,17 +93,9 @@ function App() {
       return;
     }
 
-    //let url_call = `https://newsapi.org/v2/everything?q=${
-    // selectedCity.split(' ').join('%20').trim() + '%20' + selectedUf.trim()
-    //}&apiKey=${
-    //  process.env.REACT_APP_API_KEY
-    //}&from=${selectedDate}&sortBy=popularity`;
-
     let url_call = `https://servicodados.ibge.gov.br/api/v3/noticias/?busca=${
       selectedCity.split(' ').join('%20').trim() + '%20' + selectedUf.trim()
     }&de=${selectedDate}`;
-
-    //servicodados.ibge.gov.br/api/v3/noticias/?busca=manaus%20AM
 
     fetch(url_call)
       .then(setSearching(true))
@@ -115,7 +106,6 @@ function App() {
       })
       .then((response) => {
         if (response != null) {
-          setMessage('Nenhuma noticia encontrada.');
           setSearching(false);
           setSelectedNews(response.items);
         }
@@ -156,7 +146,6 @@ function App() {
               ufs={ufs}
               cities={cities}
               searching={searching}
-              message={message}
               refVar={ref}
               disableButton={disableButton}
               convert_date={convert_date}

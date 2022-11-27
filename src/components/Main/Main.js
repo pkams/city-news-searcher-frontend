@@ -98,19 +98,21 @@ export default function Main(props) {
       </div>
 
       <div className="main__content">
+        {props.selectedNews[0] === ''
+          ? ''
+          : `Noticias encontradas: ${props.selectedNews.length}`}
+
         {props.searching ? (
           <Preloader />
-        ) : props.selectedNews.length === 0 ? (
-          props.message
         ) : (
           props.selectedNews
             .slice(0, props.itemsToShow)
-            .map((news) =>
-              news.length === 0 ? '' : <Card key={uuid()} news={news} />
+            .map((news, i) =>
+              news.length === 0 ? '' : <Card key={uuid()} news={news} idx={i} />
             )
         )}
 
-        {props.itemsToShow > props.selectedNews.length ? (
+        {props.itemsToShow >= props.selectedNews.length ? (
           ''
         ) : (
           <button
