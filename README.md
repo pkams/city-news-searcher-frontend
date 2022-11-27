@@ -1,80 +1,37 @@
 # Web Development - Practicum by Yandex - Final Project
 
-(Project and readme still in development)
+Site de página única feito utilizando **HTML + CSS + Javascript + React** para conclusão do curso **Desenvolvedor Web da Practicum by Yandex**.
 
-===
+O aplicativo "News Searcher Web App" foi implementado como projeto de finalização do curso de Desenvolvedor Web da Practicum by Yandex. O objetivo proposto foi criar um projeto frontend que interagisse com APIs publicas utilizando o framework React e linguagem Javascript. As APIs escolhidas para esta tarefa foram as APIs do IBGE para captura de dados dos estados e municipios brasileiros e, a partir destes, a possibilidade de pesquisar noticias relacionadas a determinada localidade baseando-se na API de noticias do próprio IBGE. Devido ao carater de "prova de conceito" do projeto, as noticias foram limitadas aquelas disponibilizadas pela API do IBGE, entretanto o projeto pode ser escalado para outras APIs de noticias utilizando os mesmos conceitos.
 
-Projeto: https://pkams.github.io/city-news-searcher-frontend
+### Informações sobre o projeto
 
-===
+O projeto foi construído como demonstração dos conhecimentos de frontend adquiridos durante o curso, visando a implementação de uma página criada utilizando React e interação com APIs públicas.
 
-# Getting Started with Create React App
+- Frontend: Criado utilizando HTML, CSS, Javascript e React. É responsivo em telas de >=1280px, 768px e 320px.
+- API: Utilizou-se a API do IBGE para captura dos municipios, estados e noticias relacionadas a cada região.
+- Cloud: O projeto foi hospedado no github pages.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Node version: 16.17.0
+React version: 18.2.0
 
-## Available Scripts
+### Ajustes e melhorias
 
-In the project directory, you can run:
+O projeto está em desenvolvimento, no momento em formato de POC (prova de conceito) e demonstra a funcionalidade do projeto. Devido a limitações da API de noticias do IBGE, a maioria das noticias relacionam-se aos estados da busca. Algumas melhorias a serem implementadas são:
 
-### `npm start`
+- [ ] Utilizar uma API de noticias mais robustas.
+- [ ] Backend próprio utilizando JS.
+- [ ] Persistência do conteudo dinâmicamente usando banco de dados.
+- [ ] Deploy do site em plataforma cloud (AWS/Azure/GCP)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Rodando projeto
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Para rodar o projeto da api localmente clone o repositório, entre na pasta e instale os pacotes com "npm install".
+Para rodar o servidor localmente utilize:
 
-### `npm test`
+### `npm run start`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Projeto na nuvem
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+O resultado do projeto pode ser acessado no seguinte endereço:
+https://pkams.github.io/city-news-searcher-frontend
