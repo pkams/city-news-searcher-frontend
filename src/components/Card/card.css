@@ -13,9 +13,56 @@
   width: 200px;
 }
 
+.card__img-background {
+  width: inherit;
+  height: inherit;
+  object-fit: cover;
+}
+
 .card__content {
   display: flex;
   flex-direction: column;
   justify-content: center;
   margin: auto;
+}
+
+.card__content-title {
+  font-weight: bold;
+}
+
+.card__content-link {
+  color: coral;
+  margin: auto;
+}
+
+.card__content-edit {
+  font-style: italic;
+}
+
+.card__content-link:visited {
+  color: blueviolet;
+}
+
+@media screen and (min-width: 425px) and (max-width: 768px) {
+  .card {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .card__img {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .card {
+    flex-direction: column;
+    height: auto;
+  }
+  .card__img {
+    width: 100%;
+  }
+  .card__content {
+    font-size: 10px;
+  }
 }

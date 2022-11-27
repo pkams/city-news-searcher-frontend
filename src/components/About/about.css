@@ -1,3 +1,14 @@
 .about {
   margin: 20px 200px auto 200px;
 }
+
+.about__text {
+  text-align: justify;
+  font-size: 1rem;
+}
+
+@media screen and (max-width: 740px) {
+  .about {
+    margin: 20px 50px auto 50px;
+  }
+}

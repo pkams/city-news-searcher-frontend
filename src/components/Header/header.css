@@ -1,0 +1,15 @@
+.header__title {
+  font-size: 2rem;
+}
+
+@media screen and (min-width: 740px) and (max-width: 1024px) {
+  .header__title {
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 740px) {
+  .header__title {
+    font-size: 1.2rem;
+  }
+}

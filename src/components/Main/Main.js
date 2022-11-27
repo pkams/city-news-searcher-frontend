@@ -29,7 +29,7 @@ export default function Main(props) {
 
   return (
     <main className="main">
-      <h2>
+      <h2 className="main__title">
         Selecione o estado, cidade e data de inicio para encontrar noticias
         relacionadas!
       </h2>
