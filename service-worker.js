@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/city-news-searcher-frontend/precache-manifest.3d9b733073455164947b84e7f5990f6d.js"
+  "/city-news-searcher-frontend/precache-manifest.e6d294c9c87a1114fd15cca07b8152bb.js"
 );
 
 workbox.clientsClaim();
