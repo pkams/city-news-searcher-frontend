@@ -20,6 +20,7 @@ function App() {
   const [searching, setSearching] = useState(false);
   const [message, setMessage] = useState('Nenhuma noticia encontrada.');
   const [disableButton, setDisableButton] = useState(true);
+  const [itemsToShow, setItemsToShow] = useState(3);
   const ref = createRef();
 
   function validate_date(s) {
@@ -143,22 +144,24 @@ function App() {
           path="/main"
           element={
             <Main
+              selectedUf={selectedUf}
+              selectedCity={selectedCity}
+              selectedNews={selectedNews}
+              selectedDate={selectedDate}
               setSelectedDate={setSelectedDate}
               setSelectedCity={setSelectedCity}
               setSelectedUf={setSelectedUf}
               setsearchTrigger={setsearchTrigger}
               searchTrigger={searchTrigger}
               ufs={ufs}
-              selectedUf={selectedUf}
-              selectedCity={selectedCity}
-              selectedNews={selectedNews}
-              selectedDate={selectedDate}
               cities={cities}
               searching={searching}
               message={message}
               refVar={ref}
               disableButton={disableButton}
               convert_date={convert_date}
+              itemsToShow={itemsToShow}
+              setItemsToShow={setItemsToShow}
             />
           }
         />

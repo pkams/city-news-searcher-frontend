@@ -22,7 +22,12 @@ export default function Main(props) {
   }
 
   function activateSearch() {
+    props.setItemsToShow(3);
     props.setsearchTrigger(!props.searchTrigger);
+  }
+
+  function increaseSeeMoreState() {
+    props.setItemsToShow(props.itemsToShow + 3);
   }
 
   return (
@@ -98,9 +103,22 @@ export default function Main(props) {
         ) : props.selectedNews.length === 0 ? (
           props.message
         ) : (
-          props.selectedNews.map((news) =>
-            news.length === 0 ? '' : <Card key={uuid()} news={news} />
-          )
+          props.selectedNews
+            .slice(0, props.itemsToShow)
+            .map((news) =>
+              news.length === 0 ? '' : <Card key={uuid()} news={news} />
+            )
+        )}
+
+        {props.itemsToShow > props.selectedNews.length ? (
+          ''
+        ) : (
+          <button
+            className="main__forms-see-more main__forms-item-button"
+            onClick={increaseSeeMoreState}
+          >
+            Ver mais
+          </button>
         )}
       </div>
     </main>
