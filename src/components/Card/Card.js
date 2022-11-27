@@ -9,8 +9,10 @@ export default function Card(props) {
           <img
             className="card__img-background"
             src={
-              'https://agenciadenoticias.ibge.gov.br/' +
-              JSON.parse(props.news.imagens).image_intro
+              props.news.imagens !== ''
+                ? 'https://agenciadenoticias.ibge.gov.br/' +
+                  JSON.parse(props.news.imagens).image_intro
+                : ''
             }
             alt={`imagem demonstrativa da noticia ${props.news.title}`}
           />
