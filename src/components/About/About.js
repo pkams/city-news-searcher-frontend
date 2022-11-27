@@ -15,8 +15,8 @@ export default function About() {
         de pesquisar noticias relacionadas a determinada localidade baseando-se
         na API de noticias do próprio IBGE. Devido ao carater de "prova de
         conceito" do projeto, as noticias foram limitadas aquelas
-        disponibilizadas pela API do IBGE, mas o projeto pode ser escalado para
-        outras APIs de noticias utilizando os mesmos conceitos.
+        disponibilizadas pela API do IBGE, entretanto o projeto pode ser
+        escalado para outras APIs de noticias utilizando os mesmos conceitos.
       </p>
 
       <h3>ENG</h3>

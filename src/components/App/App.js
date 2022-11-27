@@ -7,6 +7,8 @@ import Header from '../Header/Header';
 import Navigation from '../Navigation/Navigation';
 import Footer from '../Footer/Footer';
 import About from '../About/About';
+import api from '../../utils/api.js';
+
 require('dotenv').config();
 
 function App() {
@@ -55,15 +57,9 @@ function App() {
   }
 
   useEffect(() => {
-    fetch('https://servicodados.ibge.gov.br/api/v1/localidades/estados/')
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-      })
-      .then((response) => {
-        setUfs(sort_by_key(response, 'nome'));
-      });
+    api.getUf().then((response) => {
+      setUfs(sort_by_key(response, 'nome'));
+    });
   }, []);
 
   useEffect(() => {
@@ -71,17 +67,9 @@ function App() {
       return;
     }
     setSelectedCity('0');
-    fetch(
-      `https://servicodados.ibge.gov.br/api/v1/localidades/estados/${selectedUf}/municipios`
-    )
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-      })
-      .then((response) => {
-        setCities(sort_by_key(response, 'nome'));
-      });
+    api.getCities(selectedUf).then((response) => {
+      setCities(sort_by_key(response, 'nome'));
+    });
   }, [selectedUf]);
 
   useEffect(() => {
@@ -93,11 +81,8 @@ function App() {
       return;
     }
 
-    let url_call = `https://servicodados.ibge.gov.br/api/v3/noticias/?busca=${
-      selectedCity.split(' ').join('%20').trim() + '%20' + selectedUf.trim()
-    }&de=${selectedDate}`;
-
-    fetch(url_call)
+    api
+      .getNews(selectedUf, selectedCity, selectedDate)
       .then(setSearching(true))
       .then((res) => {
         if (res.ok) {
