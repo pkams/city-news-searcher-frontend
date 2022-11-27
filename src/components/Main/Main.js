@@ -7,10 +7,8 @@ const { v4: uuid } = require('uuid');
 
 export default function Main(props) {
   function handleSelectUf(evt) {
-    console.log(evt.target.value);
     const uf = evt.target.value;
     props.setSelectedUf(uf);
-    console.log(props.selectedUf);
   }
 
   function handleSelectCity(evt) {

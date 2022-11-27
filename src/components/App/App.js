@@ -80,15 +80,11 @@ function App() {
         }
       })
       .then((response) => {
-        //console.log(response);
         setCities(sort_by_key(response, 'nome'));
       });
   }, [selectedUf]);
 
   useEffect(() => {
-    console.log(
-      !validate_date(selectedDate) && selectedCity !== '0' && selectedUf !== '0'
-    );
     if (
       !validate_date(selectedDate) |
       (selectedCity === '0') |
@@ -109,8 +105,6 @@ function App() {
 
     //servicodados.ibge.gov.br/api/v3/noticias/?busca=manaus%20AM
 
-    console.log(url_call);
-
     fetch(url_call)
       .then(setSearching(true))
       .then((res) => {
@@ -119,7 +113,6 @@ function App() {
         }
       })
       .then((response) => {
-        console.log(response);
         if (response != null) {
           setMessage('Nenhuma noticia encontrada.');
           setSearching(false);
