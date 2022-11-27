@@ -100,7 +100,7 @@ export default function Main(props) {
       <div className="main__content">
         {props.selectedNews[0] === ''
           ? ''
-          : `Noticias encontradas: ${props.selectedNews.length}`}
+          : `${props.selectedNews.length} notícias encontradas.`}
 
         {props.searching ? (
           <Preloader />
