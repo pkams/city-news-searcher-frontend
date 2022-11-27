@@ -1,5 +1,5 @@
 {
-  "main.css": "/city-news-searcher-frontend/static/css/main.ab6844e3.chunk.css",
+  "main.css": "/city-news-searcher-frontend/static/css/main.d24213c8.chunk.css",
   "main.js": "/city-news-searcher-frontend/static/js/main.ab7ec304.chunk.js",
   "main.js.map": "/city-news-searcher-frontend/static/js/main.ab7ec304.chunk.js.map",
   "runtime~main.js": "/city-news-searcher-frontend/static/js/runtime~main.3b80f361.js",
@@ -9,7 +9,7 @@
   "static/js/3.9bbe71da.chunk.js": "/city-news-searcher-frontend/static/js/3.9bbe71da.chunk.js",
   "static/js/3.9bbe71da.chunk.js.map": "/city-news-searcher-frontend/static/js/3.9bbe71da.chunk.js.map",
   "index.html": "/city-news-searcher-frontend/index.html",
-  "precache-manifest.e6d294c9c87a1114fd15cca07b8152bb.js": "/city-news-searcher-frontend/precache-manifest.e6d294c9c87a1114fd15cca07b8152bb.js",
+  "precache-manifest.0b42dca5861937e0ac92e0815cc7ff5a.js": "/city-news-searcher-frontend/precache-manifest.0b42dca5861937e0ac92e0815cc7ff5a.js",
   "service-worker.js": "/city-news-searcher-frontend/service-worker.js",
-  "static/css/main.ab6844e3.chunk.css.map": "/city-news-searcher-frontend/static/css/main.ab6844e3.chunk.css.map"
+  "static/css/main.d24213c8.chunk.css.map": "/city-news-searcher-frontend/static/css/main.d24213c8.chunk.css.map"
 }
