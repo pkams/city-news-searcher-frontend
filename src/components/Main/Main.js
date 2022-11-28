@@ -8,6 +8,7 @@ const { v4: uuid } = require('uuid');
 export default function Main(props) {
   function handleSelectUf(evt) {
     const uf = evt.target.value;
+    props.setSelectedCity('0');
     props.setSelectedUf(uf);
   }
 
@@ -98,7 +99,7 @@ export default function Main(props) {
       </div>
 
       <div className="main__content">
-        {props.selectedNews[0] === ''
+        {(props.selectedNews[0] === '') | props.searching
           ? ''
           : `${props.selectedNews.length} notícias encontradas.`}
 
@@ -112,7 +113,7 @@ export default function Main(props) {
             )
         )}
 
-        {props.itemsToShow >= props.selectedNews.length ? (
+        {(props.itemsToShow >= props.selectedNews.length) | props.searching ? (
           ''
         ) : (
           <button

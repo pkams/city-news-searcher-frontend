@@ -57,6 +57,16 @@ function App() {
   }
 
   useEffect(() => {
+    if (
+      (localStorage.getItem('uf') !== null) &
+      (localStorage.getItem('city') !== null) &
+      (localStorage.getItem('date') !== null)
+    ) {
+      setSelectedUf(JSON.parse(localStorage.getItem('uf')));
+      setSelectedCity(JSON.parse(localStorage.getItem('city')));
+      setSelectedDate(JSON.parse(localStorage.getItem('date')));
+      setsearchTrigger(true);
+    }
     api.getUf().then((response) => {
       setUfs(sort_by_key(response, 'nome'));
     });
@@ -66,11 +76,23 @@ function App() {
     if (selectedUf === '0') {
       return;
     }
-    setSelectedCity('0');
+
     api.getCities(selectedUf).then((response) => {
       setCities(sort_by_key(response, 'nome'));
     });
   }, [selectedUf]);
+
+  useEffect(() => {
+    const button = ref.current;
+    if (button == null) {
+      return;
+    }
+    if ((selectedCity != '0') & validate_date(selectedDate)) {
+      setDisableButton(false);
+    } else {
+      setDisableButton(true);
+    }
+  }, [selectedCity, selectedDate, ref]);
 
   useEffect(() => {
     if (
@@ -91,23 +113,19 @@ function App() {
       })
       .then((response) => {
         if (response != null) {
-          setSearching(false);
           setSelectedNews(response.items);
+          setSearching(false);
         }
       });
   }, [searchTrigger]);
 
   useEffect(() => {
-    const button = ref.current;
-    if (button == null) {
-      return;
+    if (selectedNews[0] !== '') {
+      localStorage.setItem('uf', JSON.stringify(selectedUf));
+      localStorage.setItem('city', JSON.stringify(selectedCity));
+      localStorage.setItem('date', JSON.stringify(selectedDate));
     }
-    if ((selectedCity != '0') & validate_date(selectedDate)) {
-      setDisableButton(false);
-    } else {
-      setDisableButton(true);
-    }
-  }, [selectedCity, selectedDate, ref]);
+  }, [selectedNews]);
 
   return (
     <div className="App">
