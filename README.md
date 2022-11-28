@@ -33,5 +33,5 @@ Para rodar o servidor localmente utilize:
 
 ### Projeto na nuvem
 
-O resultado do projeto pode ser acessado no seguinte endereço:
+O resultado do projeto pode ser acessado em:
 https://pkams.github.io/city-news-searcher-frontend
