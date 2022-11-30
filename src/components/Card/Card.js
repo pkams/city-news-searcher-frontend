@@ -28,6 +28,7 @@ export default function Card(props) {
           href={props.news.link}
           target="_blank"
           className="card__content-link"
+          rel="noreferrer"
         >
           {props.news.link}
         </a>
