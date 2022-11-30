@@ -88,7 +88,7 @@ function App() {
     if (button == null) {
       return;
     }
-    if ((selectedCity != '0') & validate_date(selectedDate)) {
+    if ((selectedCity !== '0') & validate_date(selectedDate)) {
       setDisableButton(false);
     } else {
       setDisableButton(true);
