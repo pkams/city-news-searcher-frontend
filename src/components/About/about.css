@@ -3,6 +3,7 @@
 }
 
 .about__text {
+  font-family: 'Inter', sans-serif;
   text-align: justify;
   font-size: 1rem;
 }

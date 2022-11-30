@@ -26,14 +26,15 @@ function App() {
 
   function validate_date(s) {
     s = convert_date(s, 'US');
-    if (!/^\d\d\/\d\d\/\d\d\d\d$/.test(s)) {
+    if (!/^[0-3]?[0-9].[0-3]?[0-9].(?:[0-9]{2})?[0-9]{2}$/.test(s)) {
       return false;
     }
     const parts = s.split('/').map((p) => parseInt(p, 10));
-    const d = new Date(parts[2], parts[0], parts[1]);
+    const d = new Date(parts[2], parts[0] - 1, parts[1]);
+
     return (
-      d.getMonth() === parts[0] &&
       d.getDate() === parts[1] &&
+      d.getMonth() + 1 === parts[0] &&
       d.getFullYear() === parts[2]
     );
   }

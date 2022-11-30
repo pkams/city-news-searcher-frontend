@@ -27,6 +27,7 @@
 }
 
 .card__content-title {
+  font-family: 'Inter', sans-serif;
   font-weight: bold;
 }
 
@@ -36,6 +37,7 @@
 }
 
 .card__content-edit {
+  font-family: 'Inter', sans-serif;
   font-style: italic;
 }
 
